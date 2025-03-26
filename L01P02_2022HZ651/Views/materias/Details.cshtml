@@ -1,36 +1,50 @@
 ﻿@model L01P02_2022HZ651.Models.materias
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalles de Materia";
 }
 
-<h1>Details</h1>
+<h1 class="text-center">Detalles de la Materia</h1>
+<hr />
 
-<div>
-    <h4>materias</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.materia)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.materia)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.unidades_valorativas)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.unidades_valorativas)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.estado)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.estado)
-        </dd>
-    </dl>
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow-sm p-4">
+            <h4 class="text-center mb-4">Información de la Materia</h4>
+
+            <dl class="row">
+                <dt class="col-sm-3 font-weight-bold">
+                    @Html.DisplayNameFor(model => model.materia)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.materia)
+                </dd>
+
+                <dt class="col-sm-3 font-weight-bold">
+                    @Html.DisplayNameFor(model => model.unidades_valorativas)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.unidades_valorativas)
+                </dd>
+
+                <dt class="col-sm-3 font-weight-bold">
+                    @Html.DisplayNameFor(model => model.estado)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.estado)
+                </dd>
+            </dl>
+
+            <div class="text-center mt-4">
+                <a asp-action="Edit" asp-route-id="@Model?.id" class="btn btn-primary">Editar</a>
+                <a asp-action="Index" class="btn btn-secondary">Volver a la Lista</a>
+            </div>
+        </div>
+    </div>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

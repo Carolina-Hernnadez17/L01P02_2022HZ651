@@ -1,33 +1,39 @@
 ﻿@model L01P02_2022HZ651.Models.facultades
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Crear Facultad";
 }
 
-<h1>Create</h1>
-
-<h4>facultades</h4>
+<h1 class="text-center">Crear Nueva Facultad</h1>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="facultad" class="control-label"></label>
-                <input asp-for="facultad" class="form-control" />
-                <span asp-validation-for="facultad" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow-sm p-4">
+            <h4 class="text-center mb-4">Información de la Facultad</h4>
+
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="facultad" class="control-label">Nombre de la Facultad</label>
+                    <input asp-for="facultad" class="form-control" placeholder="Ingrese el nombre de la facultad" />
+                    <span asp-validation-for="facultad" class="text-danger"></span>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <input type="submit" value="Crear" class="btn btn-success" />
+                    <a asp-action="Index" class="btn btn-secondary">Volver a la Lista</a>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
 }

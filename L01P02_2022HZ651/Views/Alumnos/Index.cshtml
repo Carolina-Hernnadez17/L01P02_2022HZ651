@@ -1,59 +1,45 @@
 ﻿@model IEnumerable<L01P02_2022HZ651.Models.alumnos>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Lista de Alumnos";
 }
 
-<h1>Index</h1>
+<h1 class="text-center text-primary">Lista de Alumnos</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
+<div class="d-flex justify-content-between mb-3">
+    <a asp-action="Create" class="btn btn-success">➕ Agregar Nuevo Alumno</a>
+</div>
+
+<table class="table table-striped table-bordered shadow-sm">
+    <thead class="table-dark text-center">
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.codigo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.nombre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.apellidos)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.dui)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.estado)
-            </th>
-            <th></th>
+            <th>@Html.DisplayNameFor(model => model.codigo)</th>
+            <th>@Html.DisplayNameFor(model => model.nombre)</th>
+            <th>@Html.DisplayNameFor(model => model.apellidos)</th>
+            <th>@Html.DisplayNameFor(model => model.dui)</th>
+            <th>@Html.DisplayNameFor(model => model.estado)</th>
+            <th>Acciones</th>
         </tr>
     </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.codigo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.apellidos)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.dui)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.estado)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
-            </td>
-        </tr>
-}
+    <tbody class="text-center">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.codigo)</td>
+                <td>@Html.DisplayFor(modelItem => item.nombre)</td>
+                <td>@Html.DisplayFor(modelItem => item.apellidos)</td>
+                <td>@Html.DisplayFor(modelItem => item.dui)</td>
+                <td>
+                    <span class="badge @(item.estado == 1 ? "bg-success" : "bg-danger")">
+                        @(item.estado == 1 ? "Activo" : "Inactivo")
+                    </span>
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.id" class="btn btn-warning btn-sm">✏️ Editar</a>
+                    <a asp-action="Details" asp-route-id="@item.id" class="btn btn-info btn-sm">ℹ️ Detalles</a>
+                    <a asp-action="Delete" asp-route-id="@item.id" class="btn btn-danger btn-sm">🗑️ Eliminar</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

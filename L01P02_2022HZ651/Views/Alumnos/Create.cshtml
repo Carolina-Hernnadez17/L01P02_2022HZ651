@@ -1,53 +1,67 @@
 ﻿@model L01P02_2022HZ651.Models.alumnos
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Crear Alumno";
 }
 
-<h1>Create</h1>
-
-<h4>alumnos</h4>
+<h1 class="text-center">Registrar Nuevo Alumno</h1>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="codigo" class="control-label"></label>
-                <input asp-for="codigo" class="form-control" />
-                <span asp-validation-for="codigo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="nombre" class="control-label"></label>
-                <input asp-for="nombre" class="form-control" />
-                <span asp-validation-for="nombre" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="apellidos" class="control-label"></label>
-                <input asp-for="apellidos" class="form-control" />
-                <span asp-validation-for="apellidos" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="dui" class="control-label"></label>
-                <input asp-for="dui" class="form-control" />
-                <span asp-validation-for="dui" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="estado" class="control-label"></label>
-                <input asp-for="estado" class="form-control" />
-                <span asp-validation-for="estado" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow-sm p-4">
+            <h4 class="text-center mb-4">Datos del Alumno</h4>
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="codigo" class="form-label fw-bold"></label>
+                        <input asp-for="codigo" class="form-control" placeholder="Ingrese el código del alumno" />
+                        <span asp-validation-for="codigo" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="nombre" class="form-label fw-bold"></label>
+                        <input asp-for="nombre" class="form-control" placeholder="Ingrese el nombre" />
+                        <span asp-validation-for="nombre" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="apellidos" class="form-label fw-bold"></label>
+                        <input asp-for="apellidos" class="form-control" placeholder="Ingrese los apellidos" />
+                        <span asp-validation-for="apellidos" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="dui" class="form-label fw-bold"></label>
+                        <input asp-for="dui" class="form-control" placeholder="Ingrese el DUI" />
+                        <span asp-validation-for="dui" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <label asp-for="estado" class="form-label fw-bold"></label>
+                        <select asp-for="estado" class="form-select">
+                            <option value="1">Activo</option>
+                            <option value="0">Inactivo</option>
+                        </select>
+                        <span asp-validation-for="estado" class="text-danger"></span>
+                    </div>
+                </div>
+
+
+                <div class="d-flex justify-content-between">
+                    <a asp-action="Index" class="btn btn-secondary">Regresar</a>
+                    <input type="submit" value="Registrar" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
